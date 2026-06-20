@@ -1,18 +1,18 @@
-# FMCNet: A Fast Mamba–Convolution Hybrid Network for Hyperspectral Anomaly Detection
+# FMCNet: A Fourier-Guided Mamba-Convolution Hybrid Network for Efficient Hyperspectral Anomaly Detection
 
-------
+---
 
 ## Code Availability
 
 The implementation of FMCNet will be made publicly available upon acceptance of the paper.
 
-------
+---
 
 ## Abstract
 
-Hyperspectral anomaly detection (HAD) aims to identify anomalous targets that deviate from background regions in hyperspectral images and has attracted increasing attention in remote sensing data processing. Existing deep learning methods typically rely on deep network stacking or self-attention, which improve detection accuracy but also incur prohibitive computational costs. To overcome this limitation, we propose FMCNet, a fast Mamba-Convolution hybrid network for hyperspectral anomaly detection, which is specifically designed to integrate computationally efficient spectral-spatial modeling and background reconstruction. Specifically, a state-space model branch explicitly incorporates Fourier frequency bias into the Mamba modeling process to capture long-range spectral dependencies with linear computational complexity. Concurrently, a spatial branch utilizes depthwise separable convolutions and adaptive positional encoding to efficiently perceive global spatial structures. Furthermore, to prevent improper spatial-spectral fusion from degrading background reconstruction, an adaptive spatial-spectral fusion gating (SSFG) module is proposed to dynamically allocate competitive weights to spectral and spatial features, thereby enabling stable feature fusion and suppressing background redundancy. Extensive experiments on six public hyperspectral datasets demonstrate that FMCNet achieves state-of-the-art detection accuracy while significantly reducing inference time, showing strong potential for practical fast HAD applications.
+Hyperspectral anomaly detection (HAD) aims to identify rare and unknown targets that deviate from dominant background patterns in hyperspectral remote sensing imagery. Recent deep learning-based detectors have improved detection performance, but many of them rely on deeply stacked architectures or self-attention-based global modeling, resulting in non-negligible computational overhead when processing high-dimensional hyperspectral data. To address this accuracy--efficiency trade-off, we propose FMCNet, a Fourier-guided Mamba--convolution hybrid network for efficient hyperspectral anomaly detection. FMCNet adopts a depth-configurable dual-branch reconstruction architecture in which Fourier-basis priors are embedded before spectral state-space modeling and spatial convolutional modeling. In the spectral branch, spectral Fourier bias maps ordered selected-channel indices to channel-wise guidance terms and injects them before Mamba state-space modeling, thereby conditioning spectral dependency learning with Fourier-basis channel-order cues. In the spatial branch, adaptive Fourier positional encoding generates coordinate-aware cues and concatenates them with the input feature before depthwise separable convolution, thereby conditioning convolutional spatial modeling without self-attention-based pairwise spatial interactions. The spectral and spatial representations are further integrated by a spatial--spectral fusion gating module, which assigns competitive adaptive weights to the two branches to stabilize feature aggregation and suppress redundant background responses. The fused representation is used to reconstruct the hyperspectral background, and the anomaly map is generated from pixel-wise residuals between the input and reconstructed hyperspectral image. Experiments on six public hyperspectral datasets show that FMCNet achieves the highest AUC scores among the compared methods and provides a favorable accuracy--efficiency trade-off, with lower inference time than recent deep learning-based detectors.
 
-------
+---
 
 ## Detection Results
 
